@@ -22,7 +22,9 @@ int pilaVacia(Pila p){
 
 void insertar(Pila *p, int v){
     Pila aux=malloc(sizeof(struct Nodo)); // me devuelve en la direccion en la que empieza a esa estructura, malloc puede delvolver 0 si no hay memoria suficiente
-    aux->valor=v;                                     //Queremos el nodo para almacenar el numero v.
+    aux->valor=v; 
+    aux->sig=p;
+    *p=aux;                                    //Queremos el nodo para almacenar el numero v.
                                         //crear un nodo que tenga el numero que queramos
 }
 
