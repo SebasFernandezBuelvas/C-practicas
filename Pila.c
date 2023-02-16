@@ -21,15 +21,21 @@ int pilaVacia(Pila p){
 }
 
 void insertar(Pila *pp, int v){
-    Pila aux=malloc(sizeof(struct Nodo)); // me devuelve en la direccion en la que empieza a esa estructura, malloc puede delvolver 0 si no hay memoria suficiente
-    aux->valor=v; 
-    aux->sig=pp;
-    *pp=aux;                                    //Queremos el nodo para almacenar el numero v.
-                                        //crear un nodo que tenga el numero que queramos
+    Pila aux=malloc(sizeof(struct Nodo)); // CREAR [(X)VALOR, (X)SIGUIENTE]
+    aux->valor=v;                         // [VALOR QUE SEA, X]  
+    aux->sig=*pp;                         // [VALOR QUE SEA, PUNTERO DE LA PILA PRINCIPAL ]
+    *pp=aux;                             //  [LO PASA AL ARGUMENTO]
+                                    
 }
 
-int extraer(Pila *p){
+int extraer(Pila *pp){
+    //suponemos pila no vacaia
+    Pila aux= *pp;
+    int v=aux->valor;
+    *pp=aux->sig;
+    free(aux);
 
+    return v;
 }
 
 void borrar(Pila *p){
