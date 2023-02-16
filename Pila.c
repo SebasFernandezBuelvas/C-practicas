@@ -38,8 +38,13 @@ int extraer(Pila *pp){
     return v;
 }
 
-void borrar(Pila *p){
-
+void borrar(Pila *pp){
+    Pila aux;
+    while(*pp!=NULL){
+        aux = *pp;
+        *pp=aux->sig;
+        free(aux);
+    }
 }
 
 
