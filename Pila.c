@@ -4,7 +4,7 @@
 
 
 void crear(Pila *p){
-        *p=NULL;
+    *p=NULL;
 }
 
 void mostrar(Pila p){
