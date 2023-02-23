@@ -3,12 +3,6 @@
 #include "arbolbb.h"
 
 
-typedef struct T_Nodo* T_Arbol;
-
-	struct T_Nodo {
-			unsigned dato;
-			T_Arbol izq, der;
-		};
 
 void Crear(T_Arbol* arbol){
     *arbol=NULL;
@@ -49,4 +43,11 @@ void Mostrar(T_Arbol arbol){
     }
 }
 
-void Salvar(T_Arbol arbol, FILE* fichero);
+void Salvar(T_Arbol arbol, FILE* fichero){
+    if(arbol!=NULL){
+        Salvar(arbol->izq, fichero);
+        //printf("%d ", arbol->dato);
+        fwrite(&(arbol->dato), sizeof(unsigned), 1, fichero);
+        Salvar(arbol->der, fichero);
+    }
+}

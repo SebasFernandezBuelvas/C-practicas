@@ -12,6 +12,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "arbolbb.h" 
+#include "arbolbb.c"
 
 /**
  * Pide un n�mero "tam" al usuario, y
@@ -36,7 +37,7 @@ void muestrafichero(char* nfichero)
 
 /**
  * Guarda en el arbol "*miarbol" los n�meros almacenados en el fichero binario "nfichero"
- */
+ 
 
 void cargaFichero(char* nfichero, T_Arbol* miarbol)
 {
@@ -71,4 +72,21 @@ int main(void) {
 	Destruir (&miarbol);
 
 	return EXIT_SUCCESS;
+}
+*/
+
+int main(){
+	T_Arbol miarbol;
+	Crear(&miarbol);
+	int num=0;
+	for(int i=0; i<10; i++){
+		num=rand()%100;
+		printf("%d ", num);
+		Insertar(&miarbol, num); 
+	}
+	printf("\n");
+	Mostrar(miarbol);
+	FILE * f= fopen("num.bin", "wb");
+	if(f==NULL) perror("No se ha podido abrir el fichero");
+
 }
