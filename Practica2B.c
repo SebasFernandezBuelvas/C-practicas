@@ -30,8 +30,17 @@ void creafichero(char* nfichero)
  * Muestra por pantalla la lista de n�meros (unsigned int) almacenada
  * en el fichero binario "nfichero"
  */
-void muestrafichero(char* nfichero)
-{
+void muestrafichero(char* nfichero){
+	FILE *f= fopen(nfichero, "rb");
+	if(f==NULL) perror("No se ha podido abrir el fichero");
+	else{
+		unsigned num;
+		while(fread(&num, sizeof(unsigned),1,f)==1){
+				printf("%d ", num);
+		}
+		fclose(f);
+	}
+
 
 }
 
@@ -88,5 +97,9 @@ int main(){
 	Mostrar(miarbol);
 	FILE * f= fopen("num.bin", "wb");
 	if(f==NULL) perror("No se ha podido abrir el fichero");
-
+	else{
+		Salvar(miarbol, f);
+		fclose(f);
+	}
+	muestrafichero("num.bin");
 }
