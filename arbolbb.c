@@ -35,6 +35,8 @@ void Insertar(T_Arbol* arbol,unsigned num){
     }else{
         if(num<(*arbol)->dato){
             Insertar(&(*arbol)->izq, num);
+        }else{
+            Insertar(&(*arbol)->der, num);
         }
     }
 }
