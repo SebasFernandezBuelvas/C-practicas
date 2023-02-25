@@ -4,7 +4,7 @@
 
 
 void crear(Pila *p){
-        *p=NULL;
+    *p=NULL;
 }
 
 void mostrar(Pila p){
@@ -38,13 +38,14 @@ int extraer(Pila *pp){
     return v;
 }
 
-void borrar(Pila *pp){
+void borrar(Pila *pp){ //Borrar es dejar la estructura unitilizada
     Pila aux;
     while(*pp!=NULL){
         aux = *pp;
         *pp=aux->sig;
         free(aux);
     }
+
 }
 
 
