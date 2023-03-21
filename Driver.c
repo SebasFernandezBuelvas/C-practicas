@@ -7,14 +7,15 @@ int main(){
     crear(&p);
     insertar(&p, 25); //Por referencia si es un puntero
     mostrar(p);
-    for(int i=0; i<10; i++)
+    for(int i=10; i>0; i--)
         insertar(&p, i);
 
+    mostrar(p);
     mostrar(p);
     while(!pilaVacia(p)){
         printf("%d ", extraer(&p));
     };
     printf("\n");
-    mostrar(p);
+    
 
 }
